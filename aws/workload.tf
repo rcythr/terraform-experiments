@@ -8,7 +8,7 @@ resource "aws_security_group" "workload" {
     from_port = 22
     to_port   = 22
     protocol  = "tcp"
-    cidr_blocks = [aws_subnet.dmz.cidr_block]
+    cidr_blocks = [ aws_vpc.experiment.cidr_block ]
   }
 
   egress {
