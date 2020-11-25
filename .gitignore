@@ -1,0 +1,5 @@
+.terraform/
+.gen/
+*.tfstate
+*.tfstate.backup
+*.odg
