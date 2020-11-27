@@ -1,4 +1,8 @@
 
+###############################################################################
+## Create the Security Group for Bastion Host(s)
+###############################################################################
+
 resource "aws_security_group" "bastion" {
   name        = "bastion"
   description = "Allow SSH from anywhere, and egress to anywhere on all ports."
@@ -22,6 +26,10 @@ resource "aws_security_group" "bastion" {
     Name = "Experiment - Bastion"
   }
 }
+
+###############################################################################
+## Create the Bastion Host
+###############################################################################
 
 resource "aws_instance" "bastion" {
     subnet_id     = aws_subnet.dmz.id

@@ -1,7 +1,15 @@
 
+###############################################################################
+## Setup the AWS Provider (Uses the key in ~/.aws/)
+###############################################################################
+
 provider "aws" {
   region = var.region
 }
+
+###############################################################################
+## Create an SSH Key by generating it and then uploading it.
+###############################################################################
 
 resource "null_resource" "make_key" {
   provisioner "local-exec" {
@@ -18,6 +26,10 @@ resource "aws_key_pair" "main" {
   key_name = "main-key"
   public_key = data.local_file.key.content
 }
+
+###############################################################################
+## Look up the AMI for Ubuntu 20.10
+###############################################################################
 
 data "aws_ami" "ubuntu" {
   owners      = ["099720109477"]

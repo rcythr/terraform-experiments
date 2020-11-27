@@ -1,3 +1,6 @@
+###############################################################################
+## Create the Security Group for Workload Host(s)
+###############################################################################
 
 resource "aws_security_group" "workload" {
   name        = "workload"
@@ -22,6 +25,10 @@ resource "aws_security_group" "workload" {
     Name = "Experiment - Workload"
   }
 }
+
+###############################################################################
+## Create the Workload Hosts
+###############################################################################
 
 resource "aws_instance" "workload" {
     count         = 2
